@@ -5,6 +5,9 @@ import pyrebase
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY', 'dev')
+if app.config['SECRET_KEY'] == 'dev':
+    app.config['DEBUG'] = True
 
 
 firebase_config = {
@@ -48,5 +51,4 @@ def current_user():
 
 
 if __name__ == "__main__":
-    app.config['DEBUG'] = True
     app.run()

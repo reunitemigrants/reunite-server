@@ -51,4 +51,7 @@ def current_user():
 
 
 if __name__ == "__main__":
-    app.run()
+    kwargs = {}
+    if os.getenv('PORT'):
+        kwargs.update(port=os.getenv('PORT'))
+    app.run(**kwargs)
